@@ -1,24 +1,30 @@
 import React, { useState } from "react";
+import {FaGithub, FaLinkedin, FaEnvelope} from "react-icons/fa"
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const [hovered, setHovered] = useState(null);
 
   const links = [
-    { name: "HOME", to: "/" },
-    { name: "CONTACTO", to: "/contacto" },
-    { name: "SOBRE MI", to: "#sobre-mi" },
-    { name: "PROYECTOS", to: "/proyectos" },
+    { icon:<FaGithub/>, to: "/" },
+    { icon:<FaLinkedin/>, to: "/" },
+    { icon:<FaEnvelope/>, to: "/contacto" },
   ];
 
   return (
-    <header style={{ backgroundColor: "#333", padding: "1rem", textAlign: "center" }}>
-       <h1 style={{
-              color: "#35dc72"          
-              }}>
-            Bienvenido a mi pagina personal
-        </h1>
-      <nav style={{ display: "flex", justifyContent: "center", gap: "2rem" }}>
+    <header style={{ 
+              backgroundImage: `url("/fotos/fondo.jpg")`, 
+              backgroundSize: "cover",
+              padding: "0.5rem 1rem", 
+              display: "flex",
+              justifyContent:"flex-end",
+              gap: "2rem", 
+      }}>
+      <nav style={{ 
+              display: "flex", 
+              justifyContent: "center", 
+              gap: "2rem" 
+      }}>
         {links.map((link, index) => 
         link.external ? (
           <a
@@ -27,14 +33,14 @@ const Header = () => {
             target="_blank"
             style={{
               color: hovered === index ? "#35dc72" : "white",
+              fontSize: "1.5rem",
               textDecoration: "none",
-              fontWeight: "bold",
               transition: "color 0.3s, text-decoration 0.3s",
             }}
             onMouseEnter={() => setHovered(index)}
             onMouseLeave={() => setHovered(null)}
           >
-            {link.name}
+            {link.icon}
           </a>
         ):(
           <Link
@@ -42,6 +48,7 @@ const Header = () => {
             to={link.to}
             style={{
               color: hovered === index ? "#35dc72" : "white",
+              fontSize: "1.5rem",
               textDecoration: "none",
               fontWeight: "bold",
               transition: "color 0.3s, text-decoration 0.3s",
@@ -49,7 +56,7 @@ const Header = () => {
             onMouseEnter={() => setHovered(index)}
             onMouseLeave={() => setHovered(null)}
           >
-            {link.name}
+            {link.icon}
           </Link>
         ))}
       </nav>

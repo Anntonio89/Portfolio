@@ -1,48 +1,29 @@
 import { useState, useEffect, useRef } from "react";
-import Skills from "./Skills";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const [skillsVisible, setSkillsVisible] = useState(false);
-  const [contactVisible, setContactVisible] = useState(false);
-  const contactRef = useRef(null);
-  const skillsRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+  const [hovered, setHovered] = useState(null);
+
+  const links = [
+    { name: "CONTACTO", to: "/contacto" },
+    { name: "SOBRE MI", to: "/about" },
+    { name: "PROYECTOS", to: "/proyectos" },
+  ];
 
   useEffect(() => {
-    const handleScroll = () => {
-
-      const windowHeight = window.innerHeight;
-
-      //Animación de habilidades
-      if (skillsRef.current){
-        const topSkills = skillsRef.current.getBoundingClientRect().top;
-        if (topSkills < windowHeight * 0.8) { // cuando el 80% de la sección está visible
-            setSkillsVisible(true);
-        }else {
-          setSkillsVisible(false);
-        }
-      } 
-        //Animación de contacto
-        if(contactRef.current){
-          const topContact = contactRef.current.getBoundingClientRect().top;
-          if (topContact < windowHeight * 0.8) { // cuando el 80% de la sección está visible
-              setContactVisible(true);
-          }else {
-            setContactVisible(false);
-          }
-        }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // chequea al cargar
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    const time = setTimeout( () => {
+      setVisible(true);
+      },100);
+      return () => clearTimeout(time);     
+    },[]);
 
   return (
-    <>
+    <>    
     <section
       id="home"
       style={{
-        minHeight: "100vh",
+        minHeight: "85vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -52,8 +33,9 @@ const Home = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         padding: "2rem",
+        
       }}
-    >
+    >        
       <div
         style={{
           display: "flex",
@@ -63,91 +45,79 @@ const Home = () => {
           padding: "2rem",
           borderRadius: "10px",
           width: "100%",
-        }}
-      >            
-        <video
-            src="/videos/video.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{
-              width: "100%",
-              margin: "1rem 0",
-              transform: skillsVisible ? "scale(1)" : "scale(0.8)",
-              transition: "transform 0.5s ease-out",
-              objectFit: "cover",
-            }}
-        />        
-        <div style={{ 
-              display: "flex", 
-              alignItems: "center", 
-              gap: "1.5rem", 
-              marginTop: "1rem" 
-          }}>
-          <img
-            src="/fotos/perfil.jpg"
-            alt="Perfil"
-            style={{ 
-              width: "200px", 
-              borderRadius: "10%",
-              transform: skillsVisible ? "scale(1)" : "scale(0.8)",
-              transition: "transform 0.5s ease-out"
-            }}
-          />
-          <p style={{ fontSize: "20px", textAlign: "left" }}>
-            Soy Antonio Martínez Oliver<br/>Desarrollador Web Junior
-          </p>
-        </div>
-
-        <div
-          ref={skillsRef}
-          style={{
-            marginTop: "2rem",
-            width: "100%",
-            backgroundColor: "rgba(255, 255, 255, 0.1)",
-            padding: "1rem",
-            borderRadius: "10px",
-            transform: skillsVisible ? "translateX(0)" : "translateX(-100px)",
-            opacity: skillsVisible ? 1 : 0,
-            transition: "all 0.8s ease-out",
-          }}
-        >
-          <h1>Habilidades</h1>
-          <Skills />
-        </div>
-      </div>
-      </section>
-
-      <section
-        ref={contactRef}
-        style={{
-          minHeight: "50vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-          color: "white",
-          backgroundImage: `url("/fotos/fondo.jpg")`,
-          padding: "2rem",
-          transform: contactVisible ? "translateX(0)" : "translateX(100px)",
-          opacity: contactVisible ? 1 : 0,
+          borderTop: "5px solid #35dc72",
+          borderLeft: "5px solid #35dc72",
+          boxShadow: "0 0 15px rgba(53, 220,114, 0.5)",
+          transform:visible ? "translateY(0)" : "translateY(-20px)",
+          opacity: visible ? 1 : 0,
           transition: "all 0.8s ease-out",
         }}
-        > <div
-          style={{
-            backgroundColor: "rgba(0,0,0,0.5)",
-            padding: "2rem",
-            borderRadius: "10px",
-            width: "100%",
-            maxWidth: "600px",
-          }}
-        >
-          <h1>Contáctame</h1>
-          <p><span style={{textDecoration: "underline"}}>Email:</span> antonio.martinez.oliver@outlook.es</p>
-          <p><span style={{textDecoration: "underline"}}>Teléfono:</span> +34 649497680</p>
+      >    <h1 style={{
+              color: "#35dc72",
+              fontStyle: "italic",
+              fontSize: "3rem",          
+              }}>
+            Bienvenido a mi pagina personal
+        </h1>       
+        <p style={{ 
+                fontSize: "20px", 
+                textAlign: "left",
+                fontFamily:'Digital-7, system-ui, Avenir, Helvetica, Arial, sans-serif' 
+                }}>
+            Soy Antonio Martínez Oliver<br/>Desarrollador Web Junior
+          </p>
+        <div style={{ 
+              display: "flex", 
+              alignItems: "flex-start", 
+              gap: "3rem", 
+              marginTop: "1rem" 
+          }}>
+          <div style={{
+              textAlign: "left"}}>
+            <img
+              src="/fotos/perfil.jpg"
+              alt="Perfil"
+              style={{ 
+                width: "200px", 
+                borderRadius: "10%",
+                transform: visible ? "scale(1)" : "scale(0.8)",
+                transition: "transform 0.5s ease-out"
+              }}
+            />
+          </div>
+          <nav
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "1rem",
+              justifyContent: "flex-start",
+              margin: "2rem",
+              fontSize: "1.5rem",
+              fontFamily:'Digital-7, system-ui, Avenir, Helvetica, Arial, sans-serif',
+              
+            }}
+          >
+            {links.map((link, index) => (
+              <Link
+                key={index}
+                to={link.to}
+                style={{
+                  color: hovered === index ? "#35dc72" : "white",
+                  textDecoration: "none",
+                  fontWeight: "bold",
+                  fontSize: hovered === index ? "1.1rem" : "1rem",
+                  transition: "color 0.3s, font-size 0.3s",
+                }}
+                onMouseEnter={() => setHovered(index)}
+                onMouseLeave={() => setHovered(null)}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
         </div>
-    </section>
+      </div>
+    </section>   
     </>
   );
 };
