@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Digital-7';
+  src: url('/fonts/digital-7.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Solo aplica la fuente "Digital-7" al h1 dentro del header */
+h1 {
+  font-family: 'Digital-7', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
