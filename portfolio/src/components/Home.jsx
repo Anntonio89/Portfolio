@@ -66,37 +66,19 @@ const Home = () => {
                 }}>
             Soy Antonio Martínez Oliver<br/>Desarrollador Web Junior
           </p>
-        <div style={{ 
-              display: "flex", 
-              alignItems: "flex-start", 
-              gap: "3rem", 
-              marginTop: "1rem" 
-          }}>
-          <div style={{
-              textAlign: "left"}}>
+        <div className="row-flex">
+          <div className="perfil">
             <img
               src="/fotos/perfil.jpg"
               alt="Perfil"
-              style={{ 
-                width: "200px", 
-                borderRadius: "10%",
+              className="perfil-img"
+              style={{                 
                 transform: visible ? "scale(1)" : "scale(0.8)",
                 transition: "transform 0.5s ease-out"
               }}
             />
           </div>
-          <nav
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "1rem",
-              justifyContent: "flex-start",
-              margin: "2rem",
-              fontSize: "1.5rem",
-              fontFamily:'Digital-7, system-ui, Avenir, Helvetica, Arial, sans-serif',
-              
-            }}
-          >
+          <nav className="nav-box">
             {links.map((link, index) => (
               <Link
                 key={index}
@@ -105,7 +87,7 @@ const Home = () => {
                   color: hovered === index ? "#35dc72" : "white",
                   textDecoration: "none",
                   fontWeight: "bold",
-                  fontSize: hovered === index ? "1.1rem" : "1rem",
+                  fontSize: hovered === index ? "1.4rem" : "1.5rem",
                   transition: "color 0.3s, font-size 0.3s",
                 }}
                 onMouseEnter={() => setHovered(index)}

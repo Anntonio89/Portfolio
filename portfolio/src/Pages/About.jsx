@@ -42,7 +42,7 @@ const About=() => {
         <section
             id="about"
             style={{
-            minHeight: "100vh",
+            //minHeight: "100vh",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",

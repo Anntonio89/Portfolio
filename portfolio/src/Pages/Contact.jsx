@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import Swal from 'sweetalert2'
 
@@ -6,7 +6,13 @@ function Contact() {
     const [email,setEmail]=useState('')
     const [mensaje, setMensaje]=useState('')
     const [aceptaPoliticas, setAceptaPoliticas]=useState(false)
+    const [visible, setVisible]=useState(false)
     const navigate=useNavigate()
+
+    useEffect(() => {
+      const time = setTimeout( () => setVisible(true),100);
+      return () => clearTimeout(time);
+    },[]);
 
     const handleSubmit = (e)=>{
         e.preventDefault()
@@ -98,7 +104,12 @@ function Contact() {
           }
         }
         return (
-          <div style={styles.container}>
+          <div style={{...styles.container,
+                        transform: visible ? "translateY(0)" : "translateY(20px)",
+                        opacity: visible ? 1 : 0,
+                        transition: "all 0.8s ease-out",
+                }}
+            >
             <div style={styles.formWrapper}>
               <h1 style={styles.titulo}>Formulario de Contacto</h1>
               <form onSubmit={handleSubmit}>

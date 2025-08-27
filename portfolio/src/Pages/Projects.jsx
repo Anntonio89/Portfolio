@@ -27,7 +27,7 @@ function Projects() {
     <div
       ref={projectsRef}
       style={{
-        minHeight: "60vh",
+        minHeight: "85vh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -37,10 +37,14 @@ function Projects() {
         backgroundImage: `url("/fotos/fondo.jpg")`,
         backgroundSize: "cover",
         backgroundPosition: "center",
+        borderTop: "5px solid #35dc72",
+        borderLeft: "5px solid #35dc72",
+        boxShadow: "0 0 15px rgba(53, 220,114, 0.5)",
         padding: "2rem",
         transform: projectsVisible ? "translateY(0)" : "translateY(100px)",
         opacity: projectsVisible ? 1 : 0,
         transition: "all 0.8s ease-out",
+        
       }}
     >
       <h1

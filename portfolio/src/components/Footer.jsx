@@ -11,10 +11,12 @@ const Footer = () => {
 
 const styles = {
   footer: {
-    backgroundColor: "#333",
+    backgroundImage: `url("/fotos/fondo.jpg")`, 
+    backgroundSize: "cover",
     color: "white",
     padding: "1rem",
     textAlign: "center",
+    fontWeight: "bold",
   },
 };
 

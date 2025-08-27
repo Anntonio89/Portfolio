@@ -10,15 +10,21 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App bg-light">
+    <div style={{
+      display: "flex",
+      flexDirection: "column",
+      minHeight: "100vh"
+    }}>
       <Router>
         <Header />
+        <main style={{ flex: "1" }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contacto" element={<Contact />} />
             <Route path="/proyectos" element={<Projects />} />
           </Routes>
+          </main>
         <Footer />
       </Router>
     </div>
