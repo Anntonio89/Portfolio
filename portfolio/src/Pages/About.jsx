@@ -2,6 +2,7 @@ import {useState, useEffect, useRef} from "react";
 import Skills from "../components/Skills";
 
 const About=() => {
+    const [visible,setVisible]=useState(false);
     const [skillsVisible, setSkillsVisible] = useState(false);
     const [contactVisible, setContactVisible] = useState(false);
     const contactRef = useRef(null);
@@ -42,7 +43,6 @@ const About=() => {
         <section
             id="about"
             style={{
-            //minHeight: "100vh",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -84,8 +84,19 @@ const About=() => {
                 textAlign: "left",
                 fontFamily:'Digital-7, system-ui, Avenir, Helvetica, Arial, sans-serif' 
                 }}>
-            Soy Antonio Martínez Oliver<br/>Desarrollador Web Junior
-          </p>
+              Soy Antonio Martínez Oliver<br/>Desarrollador Web Junior
+            </p>
+            <div className="perfil">
+              <img
+                src="/fotos/perfil.jpg"
+                alt="Perfil"
+                className="perfil-img"
+                style={{                 
+                  transform: visible ? "scale(1)" : "scale(0.8)",
+                  transition: "transform 0.5s ease-out"
+                }}
+              />
+            </div>
             <div
                 ref={skillsRef}
                 style={{
@@ -103,8 +114,7 @@ const About=() => {
                 <Skills />
             </div>            
         </div>
-    </section>
-    <section
+      <div
         ref={contactRef}
         style={{
           minHeight: "50vh",
@@ -113,11 +123,7 @@ const About=() => {
           alignItems: "center",
           textAlign: "center",
           color: "white",
-          backgroundImage: `url("/fotos/fondo.jpg")`,
-          padding: "2rem",
-          transform: contactVisible ? "translateX(0)" : "translateX(100px)",
-          opacity: contactVisible ? 1 : 0,
-          transition: "all 0.8s ease-out",
+          padding: "2rem",          
         }}
         > 
         <div
@@ -127,16 +133,23 @@ const About=() => {
             borderRadius: "10px",
             width: "100%",
             maxWidth: "600px",
+            borderTop: "5px solid #35dc72",
+            borderLeft: "5px solid #35dc72",
+            boxShadow: "0 0 15px rgba(53, 220,114, 0.5)",
+            transform: contactVisible ? "translateX(0)" : "translateX(100px)",
+            opacity: contactVisible ? 1 : 0,
+            transition: "all 0.8s ease-out",
           }}
         >
           <h1 style={{
               color: "#35dc72",
               fontStyle: "italic",
               fontSize: "2rem",
-            }}>Contáctame
+            }}>Contactame
           </h1>
           <p><span style={{textDecoration: "underline"}}>Email:</span> antonio.martinez.oliver@outlook.es</p>
           <p><span style={{textDecoration: "underline"}}>Teléfono:</span> +34 649497680</p>
+        </div>
         </div>
     </section>
     </>

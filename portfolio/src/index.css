@@ -11,12 +11,26 @@ h1 {
 }
 
 .row-flex {
+  background-color: rgba(0,0,0,0.6);
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(53, 220,114, 0.5);
+  border-top: 3px solid #35dc72;
+  border-left: 3px solid #35dc72;
   display: flex;
   align-items: flex-start;
   gap: 3rem;
   margin-top: 1rem;
   flex-wrap: wrap;
   justify-content: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.fade-in{
+  opacity: 1;
+  transform: translateY(0);
 }
 .perfil {
   text-align: left;

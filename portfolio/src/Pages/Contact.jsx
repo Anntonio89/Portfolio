@@ -57,7 +57,12 @@ function Contact() {
             borderRadius: "12px",
             width: "100%",
             maxWidth: "600px",
-            boxShadow: "0 6px 20px rgba(0,0,0,0.4)",
+            borderTop: "5px solid #35dc72",
+            borderLeft: "5px solid #35dc72",
+            boxShadow: "0 0 15px rgba(53, 220,114, 0.5)",
+            transform: visible ? "translateY(0)" : "translateY(20px)",
+            opacity: visible ? 1 : 0,
+            transition: "all 0.8s ease-out",
           },
           titulo: {
             marginBottom: "1.5rem",
@@ -104,12 +109,7 @@ function Contact() {
           }
         }
         return (
-          <div style={{...styles.container,
-                        transform: visible ? "translateY(0)" : "translateY(20px)",
-                        opacity: visible ? 1 : 0,
-                        transition: "all 0.8s ease-out",
-                }}
-            >
+          <div style={styles.container}>
             <div style={styles.formWrapper}>
               <h1 style={styles.titulo}>Formulario de Contacto</h1>
               <form onSubmit={handleSubmit}>

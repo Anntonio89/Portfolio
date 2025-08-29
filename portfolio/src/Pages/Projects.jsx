@@ -24,27 +24,37 @@ function Projects() {
   }, []);
 
   return (
-    <div
-      ref={projectsRef}
+    <section id="projects"
       style={{
-        minHeight: "85vh",
+        minHeight:"100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        textAlign: "center",
+        color: "white",
+        backgroundImage: `url("/fotos/fondo.jpg")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        padding: "4rem 2rem",
+      }}
+    
+    >
+    <div      
+      style={{
+        width:"90%",
+        maxWidth:"800px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
         color: "white",
-        backgroundImage: `url("/fotos/fondo.jpg")`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundColor: "rgba(0,0,0,0.5)",
+        padding: "2rem", 
+        borderRadius:"10px",
         borderTop: "5px solid #35dc72",
         borderLeft: "5px solid #35dc72",
-        boxShadow: "0 0 15px rgba(53, 220,114, 0.5)",
-        padding: "2rem",
-        transform: projectsVisible ? "translateY(0)" : "translateY(100px)",
-        opacity: projectsVisible ? 1 : 0,
-        transition: "all 0.8s ease-out",
-        
+        boxShadow: "0 0 15px rgba(53, 220,114, 0.5)",        
       }}
     >
       <h1
@@ -58,46 +68,53 @@ function Projects() {
       </h1>
 
       <div
+        ref={projectsRef}
         style={{
           backgroundColor: "rgba(0,0,0,0.5)",
           padding: "2rem",
           borderRadius: "10px",
-          maxWidth: "600px",
+          maxWidth: "600px", 
+          borderTop: "5px solid #35dc72",
+          borderLeft: "5px solid #35dc72",
+          boxShadow: "0 0 15px rgba(53, 220,114, 0.5)",         
+          transform: projectsVisible ? "translateY(0)" : "translateY(100px)",
+          opacity: projectsVisible ? 1 : 0,
+          transition: "all 0.8s ease-out",
         }}
       >
         <a 
-            href="https://proyecto-daw-tau.vercel.app" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            style={{ textDecoration: "none" }}
+          href="https://proyecto-daw-tau.vercel.app" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          style={{ textDecoration: "none" }}
+        >
+          <img
+              src="/fotos/gym-project.jpg"
+              alt="Proyecto Gimnasio"
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+              style={{
+                  width: "50%",
+                  borderRadius: "10px",
+                  marginBottom: "1rem",
+                  transition: "transform 0.3s ease-in-out",
+                  transform: hovered ? "scale(0.95)" : "scale(1)",
+              }}
+          />
+          <h5
+            style={{
+              fontFamily:'Digital-7, system-ui, Avenir, Helvetica, Arial, sans-serif', 
+              fontStyle:"italic",
+              fontWeight: "bold",
+              color: "#35dc72",
+             }}
             >
-            <img
-                src="/fotos/gym-project.jpg"
-                alt="Proyecto Gimnasio"
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
-                style={{
-                    width: "50%",
-                    borderRadius: "10px",
-                    marginBottom: "1rem",
-                    transition: "transform 0.3s ease-in-out",
-                    transform: hovered ? "scale(0.95)" : "scale(1)",
-                }}
-            />
-            <h5
-                style={{
-                    fontFamily: "Open Sans, sans-serif",
-                    fontStyle:"italic",
-                    fontWeight: "bold",
-                    color: "#35dc72",
-                }}
-            >
-                GESTIÓN DE GIMNASIO
-            </h5>
-            </a>
-
+            GESTION DE GIMNASIO
+          </h5>
+        </a>
       </div>
     </div>
+    </section>
   );
 }
 

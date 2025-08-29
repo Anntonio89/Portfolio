@@ -11,8 +11,7 @@ const Footer = () => {
 
 const styles = {
   footer: {
-    backgroundImage: `url("/fotos/fondo.jpg")`, 
-    backgroundSize: "cover",
+    backgroundColor:"rgba(2, 2, 2, 0.9)",
     color: "white",
     padding: "1rem",
     textAlign: "center",
